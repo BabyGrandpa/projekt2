@@ -16,5 +16,3 @@ top = series.head(n = n)
   
 # display 
 top 
-
-print("din moder")
