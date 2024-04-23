@@ -18,3 +18,4 @@ top = series.head(n = n)
 top 
 
 print("din moder")
+print("din lort")
