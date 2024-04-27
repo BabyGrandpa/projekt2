@@ -1,21 +1,12 @@
 
 # importing pandas module 
 import pandas as pd 
-  
-# making data frame 
-data = pd.read_csv("https://media.geeksforgeeks.org/wp-content/uploads/nba.csv") 
-  
-# number of rows to return 
-n = 9
-  
-# creating series 
-series = data["Name"] 
-  
-# returning top n rows 
-top = series.head(n = n) 
-  
-# display 
-top 
+import serial #bruges til at kommunikere med uart 
+import serial.tools.list_ports #bruges til at kommunikere med uart 
 
-print("din moder")
-print("din lort")
+
+# making data frame 
+data = pd.read_csv("nba.csv") #læser csv filen
+print(data.head()) #printer top 5 lines i csv filen
+
+  
