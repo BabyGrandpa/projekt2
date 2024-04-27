@@ -12,7 +12,12 @@ class SensorData:
 something = SensorData()
 
 df = pd.DataFrame(something.dict)
-df.to_csv('file1.csv')
+df.to_csv('SensorData.csv')
 
 dread = pd.read_csv("SensorData.csv",header = 0, usecols=["temperatur","wind speed","current time", "current date"])
-print(dread)
+
+gk = dread.groupby('current date')
+for date,group in gk:
+    print(date)
+    print(group)
+    print()
