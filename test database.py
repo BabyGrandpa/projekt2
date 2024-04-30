@@ -31,7 +31,7 @@ class SensorData:
 
 something = SensorData()
 df = pd.DataFrame(something.dict)
-df.to_csv('SensorData.csv', index=False)
+#df.to_csv('SensorData.csv', index=False)
 
 a = 17
 b = 10
