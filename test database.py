@@ -12,13 +12,12 @@ class SensorData:
 
     dict = {'temperatur': temp, 'wind speed': wind, 'current time': time, 'current date':date}
 
-    def add_row(Self,a,b,c,d):
+    def add_row(self, a, b, c, d):
         better_dict = {'temperatur': a, 'wind speed': b, 'current time': c, 'current date': d}
 
-        with open('SensorData.csv','a') as f_object:
-            this = DictWriter(f_object, fieldnames=Self.datas)
-            this.writerow(better_dict)
-            f_object.close()
+        with open('SensorData.csv', 'a', newline='') as f_object:
+            dict_writer = DictWriter(f_object, fieldnames=self.datas)
+            dict_writer.writerow(better_dict)
     
     def get_date(Self):
         date = dt.date.today()

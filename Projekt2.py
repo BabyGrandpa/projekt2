@@ -28,7 +28,7 @@ class Tid_Dato:
         #[self.nuvarende_dato/tid] er en liste der indeholder en værdi
         data = {
         "Dato": [self.nuvaerende_dato],
-        "Tid": [self.nuvaerende_tid],   
+        "Tid": [self.nuvaerende_tid],
         }
         dataframe = pd.DataFrame(data)
 
