@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from csv import DictWriter
 import datetime as dt
+import time
 
 class SensorData:
     temp = [20,21,23,21,25,11,14,13,17]
@@ -32,22 +33,25 @@ class SensorData:
         time_c = time.strftime('%H:%M')
         return time_c
     
-    def within_tresh(self,a,b,c):
+    def within_tresh(self, a, b, c):
         if (a <= b and a >= c ):
             return True
         return False
 
 something = SensorData()
 
-a = 17
-b = 5
-c = something.get_time()
-d = something.get_date()
+while 1:
+    a = np.random.randint(10,25)
+    b = np.random.randint(1,14)
+    c = something.get_time()
+    d = something.get_date()
 
-something.add_row(a,b,c,d)
+    something.add_row(a,b,c,d)
+    time.sleep(5)
+
 
 dread = pd.read_csv("SensorData.csv", header = 0, usecols=["temperatur","wind speed","current time", "current date", "within threshold"])
 
-gk = dread.groupby('wind speed')
-gr = gk.get_group(5)
+gk = dread.groupby('within threshold')
+gr = gk.get_group(True)
 print(gr)
