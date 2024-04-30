@@ -29,7 +29,7 @@ class Tid_Dato:
         data = {
         "Dato": [self.nuvaerende_dato],
         "Tid": [self.nuvaerende_tid],   
-    }
+        }
         dataframe = pd.DataFrame(data)
 
         #lav dataframen til en csv-fil
