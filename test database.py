@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from csv import DictWriter
+import datetime as dt
 
 class SensorData:
     temp = [20,21,23,21,25,11,14,13,17]
@@ -15,24 +16,32 @@ class SensorData:
         better_dict = {'temperatur': a, 'wind speed': b, 'current time': c, 'current date': d}
 
         with open('SensorData.csv','a') as f_object:
-            this = DictWriter(f_object, fieldnames=something.datas)
+            this = DictWriter(f_object, fieldnames=Self.datas)
             this.writerow(better_dict)
             f_object.close()
+    
+    def get_date(Self):
+        date = dt.date.today()
+        date_c = date.strftime('%d/%m/%Y')
+        return date_c
+        
+    def get_time(Self):
+        time = dt.datetime.now()
+        time_c = time.strftime('%H:%M')
+        return time_c
 
 something = SensorData()
-
 df = pd.DataFrame(something.dict)
 df.to_csv('SensorData.csv', index=False)
 
 a = 17
 b = 10
-c = '16:55'
-d = '27/04/2024'
+c = something.get_time()
+d = something.get_date()
 
 something.add_row(a,b,c,d)
 
-
-dread = pd.read_csv("SensorData.csv",header = 0, usecols=["temperatur","wind speed","current time", "current date"])
+dread = pd.read_csv("SensorData.csv", header = 0, usecols=["temperatur","wind speed","current time", "current date"])
 
 gk = dread.groupby('wind speed')
 gr = gk.get_group(10)
